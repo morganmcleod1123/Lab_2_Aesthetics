@@ -5,10 +5,13 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    private float score = 0;
     public static GameManager Instance { get; private set; }
 
     public GameObject dialogueBox;
     public GameObject dialogueText;
+
+    public TextMeshProUGUI scoreText;
 
     private Coroutine dialogCO;
 
@@ -52,5 +55,14 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
     }
-
+    public void IncStamps(int ds)
+    {
+        score += ds;
+        scoreText.text = "Stamps: " + score;
+    }
+    public void DecStamps(int ds)
+    {
+        score -= ds;
+        scoreText.text = "Stamps: " + score;
+    }
 }
