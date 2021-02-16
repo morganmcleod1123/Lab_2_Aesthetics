@@ -10,9 +10,14 @@ public class followMe : MonoBehaviour
     private float vertical;
     private float runSpeed = 10f;
     private float moveLimiter = 2 ;
+
+    private bool speedBoost;
+
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        speedBoost = false;
         
     }
 
@@ -29,6 +34,15 @@ public class followMe : MonoBehaviour
            horizontal = horizontal/ moveLimiter;
            vertical = vertical/ moveLimiter;
         }
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        if (!speedBoost)
+        {
+            body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        } else
+        {
+            body.velocity = new Vector2(horizontal * runSpeed * 1.5f, vertical * runSpeed * 1.5f);
+        }
+    }
+    public void Boost(bool boosting) {
+        this.speedBoost = boosting;
     }
 }

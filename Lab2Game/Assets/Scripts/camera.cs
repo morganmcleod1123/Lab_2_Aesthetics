@@ -43,7 +43,7 @@ public class camera : MonoBehaviour
             } else if (spriteLoc.x > rBound)
             {
                 pos.x += spriteLoc.x - rBound;
-            } else if (spriteLoc.y < dBound)
+            } if (spriteLoc.y < dBound)
             {
                 pos.y -= dBound - spriteLoc.y;
             } else if (spriteLoc.y > uBound)
