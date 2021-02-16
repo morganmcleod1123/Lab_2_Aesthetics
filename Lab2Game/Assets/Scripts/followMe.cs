@@ -9,7 +9,7 @@ public class followMe : MonoBehaviour
     private float horizontal;
     private float vertical;
     private float runSpeed = 10f;
-    private float moveLimiter = 2 ;
+    public float moveLimiter = 2 ;
 
     private bool speedBoost;
 
@@ -34,6 +34,7 @@ public class followMe : MonoBehaviour
            horizontal = horizontal/ moveLimiter;
            vertical = vertical/ moveLimiter;
         }
+
         if (!speedBoost)
         {
             body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
