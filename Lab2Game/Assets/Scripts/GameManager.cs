@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     public GameObject dialogueText;
 
     public TextMeshProUGUI scoreText;
+    public GameObject startButton;
+    public GameObject backgroundImage;
+    public GameObject events;
 
     private Coroutine dialogCO;
 
@@ -55,6 +59,12 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
     }
+
+    public void HideDialog(string text)
+    {
+        dialogueBox.SetActive(false);
+        StopAllCoroutines();
+    }
     public void IncStamps(int ds)
     {
         score += ds;
@@ -72,4 +82,34 @@ public class GameManager : MonoBehaviour
             scoreText.text = "Stamps: " + score;
         }
     }
+    public void StartButton()
+    {
+        startButton.SetActive(false);
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
+    }
+    IEnumerator ColorLerp(Color endValue, float duration)
+    {
+        float time = 0;
+        Image sprite = backgroundImage.GetComponent<Image>();
+        Color startValue = sprite.color;
+     
+
+        while (time < duration)
+        {
+            sprite.color = Color.Lerp(startValue, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        sprite.color = endValue;
+    }
+    public void GameOver()
+    {
+        startButton.SetActive(true);
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), 2));
+        //HideDialog();
+        StopAllCoroutines();
+        
+    }
+
 }
+
