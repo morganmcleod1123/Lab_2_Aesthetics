@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject startButton;
     public GameObject backgroundImage;
-    public GameObject events;
+    //public GameObject events;
 
     private Coroutine dialogCO;
 
@@ -82,19 +82,19 @@ public class GameManager : MonoBehaviour
             scoreText.text = "Stamps: " + score;
         }
     }
+    
     public void StartButton()
     {
         startButton.SetActive(false);
         StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
     }
+    
     IEnumerator ColorLerp(Color endValue, float duration)
     {
         float time = 0;
         Image sprite = backgroundImage.GetComponent<Image>();
         Color startValue = sprite.color;
-     
-
-        while (time < duration)
+        while (time< duration)
         {
             sprite.color = Color.Lerp(startValue, endValue, time / duration);
             time += Time.deltaTime;
@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), 2));
         //HideDialog();
         StopAllCoroutines();
-        
     }
+    
 
 }
 
