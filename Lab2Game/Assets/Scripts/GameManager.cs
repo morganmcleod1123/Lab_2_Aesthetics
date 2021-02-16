@@ -62,7 +62,14 @@ public class GameManager : MonoBehaviour
     }
     public void DecStamps(int ds)
     {
-        score -= ds;
-        scoreText.text = "Stamps: " + score;
+        if (score == 0)
+        {
+            score = 0;
+        }
+        else
+        {
+            score -= ds;
+            scoreText.text = "Stamps: " + score;
+        }
     }
 }
