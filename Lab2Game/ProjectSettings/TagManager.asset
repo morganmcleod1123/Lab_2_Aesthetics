@@ -8,6 +8,7 @@ TagManager:
   - house
   - dog
   - player
+  - locks
   layers:
   - Default
   - TransparentFX

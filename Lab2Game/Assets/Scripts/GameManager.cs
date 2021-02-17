@@ -7,13 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float score = 0;
+   
     public static GameManager Instance { get; private set; }
-
+    
+    public float score = 0;
+    public float stamps = 4;
+    
     //public GameObject particles;
 
     public GameObject dialogueBox;
     public GameObject dialogueText;
+
 
     public TextMeshProUGUI scoreText;
     public GameObject startButton;
@@ -77,6 +81,9 @@ public class GameManager : MonoBehaviour
     {
         score += ds;
         scoreText.text = "Stamps: " + score;
+        stamps -= ds;
+        Debug.Log("Stamps: " + stamps);
+        Debug.Log("Score:" + score);
         
     }
     public void DecStamps(int ds)
@@ -90,6 +97,7 @@ public class GameManager : MonoBehaviour
             score -= ds;
             scoreText.text = "Stamps: " + score;
         }
+        
     }
     
     public void StartButton()
@@ -135,7 +143,16 @@ public class GameManager : MonoBehaviour
         //HideDialog();
         
     }
-    
+    public float returnscore()
+    {
+        return score;
+    }
+    public float returnstamps()
+    {
+        //Debug.Log(stamps);
+        return stamps;
+
+    }
 
 }
 
