@@ -8,7 +8,8 @@ There was a lot of overlap between the contributions. For instance, Olivia made 
 
 
 Attributions:
-stamp <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+stamp Icons made by "https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 dog https://opengameart.org/content/pug-rework
 House and Mailman: https://bakudas.itch.io/generic-rpg-pack
 Background Tileset https://stealthix.itch.io/rpg-nature-tileset
