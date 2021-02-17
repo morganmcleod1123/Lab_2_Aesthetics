@@ -17,11 +17,12 @@ public class givestamp : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "house")
+        if (collision.gameObject.tag == "house" && GameManager.Instance.score != 0)
         {
             Debug.Log("stamp given");
             GameManager.Instance.DecStamps(1);
-            //GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().Play();
+            
         }
     }
 }
