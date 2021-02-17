@@ -5,7 +5,6 @@ using UnityEngine;
 public class ParticleShower : MonoBehaviour
 {
     public GameObject particles;
-    public GameObject trash;
     private ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
@@ -29,10 +28,6 @@ public class ParticleShower : MonoBehaviour
             if (GameManager.Instance.score > 0)
             {
                 ps.Play();
-                if (GameManager.Instance.score == 0)
-                {
-                    Destroy(trash);
-                }
             }
         }
     }
