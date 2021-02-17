@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private float score = 0;
+    public float score = 0;
     public static GameManager Instance { get; private set; }
+
+    //public GameObject particles;
 
     public GameObject dialogueBox;
     public GameObject dialogueText;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(canvas);
             DontDestroyOnLoad(events);
+            //DontDestroyOnLoad(particles);
         }
         else 
         {
@@ -57,7 +60,6 @@ public class GameManager : MonoBehaviour
         dialogueBox.SetActive(false);
         StopCoroutine(dialogCO);
     }
-
     IEnumerator TypeText(string text) {
         dialogueText.GetComponent<TextMeshProUGUI>().text = "";
         foreach (char c in text.ToCharArray()) {
@@ -75,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         score += ds;
         scoreText.text = "Stamps: " + score;
+        
     }
     public void DecStamps(int ds)
     {
@@ -93,6 +96,11 @@ public class GameManager : MonoBehaviour
     {
         startButton.SetActive(false);
         StartCoroutine(LoadYourAsyncScene("MailmanWorld"));
+    }
+
+    public void EndGame() 
+    {
+        StartCoroutine(LoadYourAsyncScene("End Screen"));
     }
 
     IEnumerator LoadYourAsyncScene(string scene) 
