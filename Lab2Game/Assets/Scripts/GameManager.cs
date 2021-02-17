@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject startButton;
     public GameObject backgroundImage;
-    //public GameObject events;
+
+    public GameObject canvas;
+    public GameObject events;
 
     private Coroutine dialogCO;
 
@@ -35,6 +38,9 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(canvas);
+            DontDestroyOnLoad(events);
         }
         else 
         {
@@ -86,8 +92,19 @@ public class GameManager : MonoBehaviour
     public void StartButton()
     {
         startButton.SetActive(false);
+        StartCoroutine(LoadYourAsyncScene("MailmanWorld"));
+    }
+
+    IEnumerator LoadYourAsyncScene(string scene) 
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        while (!asyncLoad.isDone) 
+        {
+            yield return null;
+        }
         StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
     }
+
     
     IEnumerator ColorLerp(Color endValue, float duration)
     {
