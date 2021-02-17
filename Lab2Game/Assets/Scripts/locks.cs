@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class foundstamp : MonoBehaviour
+public class locks : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,14 +17,13 @@ public class foundstamp : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "stamp") {
-            Debug.Log("I got the stamp");
-            Debug.Log("Stamps: " + GameManager.Instance.stamps);
-            Debug.Log("Score:" + GameManager.Instance.score);
+       
+        if (GameManager.Instance.returnscore() == 0 && (collision.gameObject.tag == "locks"))
+            {
+            Debug.Log("you have collided with the lock");
             Destroy(collision.gameObject);
-            GameManager.Instance.IncStamps(1);
-            //GetComponent<AudioSource>().Play();
+            }
+        
+  
         }
     }
-
-}

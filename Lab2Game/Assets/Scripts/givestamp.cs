@@ -17,7 +17,7 @@ public class givestamp : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "house" && GameManager.Instance.score != 0)
+        if (collision.gameObject.tag == "house" && GameManager.Instance.returnscore() > 0)
         {
             Debug.Log("stamp given");
             GameManager.Instance.DecStamps(1);
