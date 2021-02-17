@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     public float score = 0;
-    public float stamps = 4;
+    public float stampsCollected = 0;
     
     //public GameObject particles;
 
@@ -81,8 +81,9 @@ public class GameManager : MonoBehaviour
     {
         score += ds;
         scoreText.text = "Stamps: " + score;
-        stamps -= ds;
-        Debug.Log("Stamps: " + stamps);
+        stampsCollected += ds;
+        //stamps -= ds;
+        //Debug.Log("Stamps: " + stamps);
         Debug.Log("Score:" + score);
         
     }
@@ -150,8 +151,7 @@ public class GameManager : MonoBehaviour
     public float returnstamps()
     {
         //Debug.Log(stamps);
-        return stamps;
-
+        return stampsCollected;
     }
 
 }

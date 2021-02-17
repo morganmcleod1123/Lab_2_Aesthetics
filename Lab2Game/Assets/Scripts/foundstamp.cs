@@ -20,7 +20,7 @@ public class foundstamp : MonoBehaviour
     {
         if (collision.gameObject.tag == "stamp") {
             Debug.Log("I got the stamp");
-            Debug.Log("Stamps: " + GameManager.Instance.stamps);
+            Debug.Log("Stamps: " + GameManager.Instance.stampsCollected);
             Debug.Log("Score:" + GameManager.Instance.score);
             Destroy(collision.gameObject);
             GameManager.Instance.IncStamps(1);
